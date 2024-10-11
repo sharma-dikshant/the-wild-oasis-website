@@ -12,7 +12,7 @@ export default async function Page() {
           <li key={user.id}>{user.name}</li>
         ))}
       </ul>
-      <Counter/>
+      <Counter users={data}/>
     </div>
   );
 }

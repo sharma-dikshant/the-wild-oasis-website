@@ -1,3 +1,6 @@
+export const metadata = {
+  title: "Guest Area",
+};
 function page() {
   return <div>your account</div>;
 }

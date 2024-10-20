@@ -1,7 +1,11 @@
+import {unstable_noStore as noStore} from 'next/cache';
 import CabinCard from "@/app/_components/CabinCard";
 import { getCabins } from "../_lib/data-service";
 
 async function CabinList() {
+
+  //!to opt out of data catch and revalidate this component
+  // noStore(); //this is to opt out of data catch and always fetch the data from the server
   const cabins = await getCabins();
   //   console.log(cabins);
   if (!cabins.length) return null;

@@ -105,7 +105,7 @@ export async function getBookedDatesByCabinId(cabinId) {
 
   // Getting all bookings
   const { data, error } = await supabase
-    .from('bookings')
+    .from('booking')
     .select('*')
     .eq('cabinId', cabinId)
     .or(`startDate.gte.${today},status.eq.checked-in`);
@@ -114,6 +114,8 @@ export async function getBookedDatesByCabinId(cabinId) {
     console.error(error);
     throw new Error('Bookings could not get loaded');
   }
+
+  // await new Promise((res) => setTimeout(res, 6000));
 
   // Converting to actual dates to be displayed in the date picker
   const bookedDates = data
@@ -129,7 +131,7 @@ export async function getBookedDatesByCabinId(cabinId) {
 }
 
 export async function getSettings() {
-  const { data, error } = await supabase.from('settings').select('*').single();
+  const { data, error } = await supabase.from('appSettings').select('*').single();
 
   if (error) {
     console.error(error);
